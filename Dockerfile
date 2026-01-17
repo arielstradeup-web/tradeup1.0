@@ -1,9 +1,9 @@
-FROM eclipse-temurin:17-jdk
+FROM maven:3.9.6-eclipse-temurin-17
 
 WORKDIR /app
 
 COPY . .
 
-RUN javac Main.java
+RUN mvn clean package
 
-CMD ["java", "Main"]
+CMD ["java", "-cp", "target/classes:target/dependency/*", "Main"]
